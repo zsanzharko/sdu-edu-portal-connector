@@ -8,7 +8,7 @@ import kz.sdu.portal.connector.dto.portal.StudentPortalDashboard;
 import kz.sdu.portal.connector.dto.portal.attendance.StudentPortalAttendance;
 import kz.sdu.portal.connector.dto.portal.schedule.StudentSchedule;
 import kz.sdu.portal.connector.exception.PortalException;
-import kz.sdu.portal.connector.service.PortalRequestAPIService;
+import kz.sdu.portal.connector.service.PortalRequestAPIConnector;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -22,7 +22,7 @@ import java.util.Properties;
 
 class PortalResponseDataParserServiceTest {
   private static final Properties studentCredentials = new Properties();
-  private static PortalRequestAPIService service;
+  private static PortalRequestAPIConnector service;
   private static final PortalParserService portalParserService = new PortalParserService();
   private static String studentId;
 
@@ -40,7 +40,7 @@ class PortalResponseDataParserServiceTest {
             studentId,
             studentCredentials.getProperty("student.password").toCharArray());
 
-    service = new PortalRequestAPIService();
+    service = new PortalRequestAPIConnector();
     service.authorize(authorizeStudentCredential);
   }
 

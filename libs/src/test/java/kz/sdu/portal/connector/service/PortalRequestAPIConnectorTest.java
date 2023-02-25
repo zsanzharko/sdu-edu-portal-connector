@@ -15,9 +15,9 @@ import java.nio.file.Files;
 import java.util.Properties;
 
 
-public class PortalRequestAPIServiceTest {
+public class PortalRequestAPIConnectorTest {
   private static final Properties studentCredentials = new Properties();
-  private static PortalRequestAPIService service;
+  private static PortalRequestAPIConnector service;
 
   @BeforeAll
   public static void setCredentials() throws IOException {
@@ -32,7 +32,7 @@ public class PortalRequestAPIServiceTest {
             studentCredentials.getProperty("student.id"),
             studentCredentials.getProperty("student.password").toCharArray());
 
-    service = new PortalRequestAPIService();
+    service = new PortalRequestAPIConnector();
     service.authorize(authorizeStudentCredential);
   }
 
@@ -59,7 +59,7 @@ public class PortalRequestAPIServiceTest {
 
   @Test
   void authorizeIncorrect() throws IOException {
-    PortalRequestAPIService service = new PortalRequestAPIService();
+    PortalRequestAPIConnector service = new PortalRequestAPIConnector();
     AuthorizeStudentCredential authorizeStudentCredential =
             new AuthorizeStudentCredential("student", new char[] {'a', 'b', 'c'});
     boolean clientAuthorized = service.authorize(authorizeStudentCredential);

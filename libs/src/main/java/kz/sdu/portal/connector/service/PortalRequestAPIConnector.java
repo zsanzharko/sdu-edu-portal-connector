@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-public class PortalRequestAPIService implements AutoCloseable {
+public class PortalRequestAPIConnector implements AutoCloseable {
   private final static String BASE_URL = "https://my.sdu.edu.kz/";
   private final static String LOGIN_API_NAME = "api/login";
   private final static String LOGOUT_API_NAME = "auth/logout";
@@ -44,7 +44,7 @@ public class PortalRequestAPIService implements AutoCloseable {
 
   private final ClientConnectionPortalInfo client = new ClientConnectionPortalInfo();
 
-  public PortalRequestAPIService() {
+  public PortalRequestAPIConnector() {
     this.httpClient = HttpClients.createDefault();
     this.language = PortalLanguageConnector.EN;
   }
