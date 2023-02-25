@@ -1,0 +1,11 @@
+POST https://my.sdu.edu.kz/api/v1/my-dashboard
+GET https://my.sdu.edu.kz/api/login
+GET https://my.sdu.edu.kz/auth/logout
+GET https://my.sdu.edu.kz/api/v1/my-schedule
+GET https://my.sdu.edu.kz/api/v1/my-attendance
+GET https://my.sdu.edu.kz/api/v1/my-grades
+GET https://my.sdu.edu.kz/api/v1/my-system-calendar
+GET https://my.sdu.edu.kz/api/v1/my-academic
+GET https://my.sdu.edu.kz/api/v1/my-academic/my-transcript
+GET https://my.sdu.edu.kz/api/v1/my-operations
+GET https://my.sdu.edu.kz/api/v1/my-registration
