@@ -31,7 +31,6 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
     testCompileOnly 'org.projectlombok:lombok:1.18.24'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
-    implementation 'org.slf4j:slf4j-simple:2.0.6'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
     implementation 'org.apache.httpcomponents.client5:httpclient5:5.2.1'
 }
