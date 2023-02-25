@@ -42,3 +42,5 @@ bin/
 .DS_Store
 .idea/
 /src/main/resources/schemas/
+/libs/src/test/resources/response/
+/libs/src/main/resources/cert/
