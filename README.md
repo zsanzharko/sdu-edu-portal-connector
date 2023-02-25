@@ -7,6 +7,20 @@ The connector provides data that is also used by the main student portal site.
 
 ## Getting Started
 
+### Gradle use
+```
+    allprojects {
+        repositories {
+            ...
+            maven { url 'https://jitpack.io' }
+        }
+    }
+    
+    dependencies {
+        implementation 'com.github.zsanzharko:sdu-edu-portal-connector:1.1'
+    }
+```
+
 `PortalRequestAPIConnector.class` is the main class for connect to portal with user credentials.
 
 ### Authentication
