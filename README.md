@@ -1,4 +1,5 @@
 # SDU Portal Connector
+[![](https://jitpack.io/v/zsanzharko/sdu-edu-portal-connector.svg)](https://jitpack.io/#zsanzharko/sdu-edu-portal-connector)
 ## Introduction
 I wrote a connector to be able to get data programmatically. This way it 
 will be possible to write various microservices to automate student life.
