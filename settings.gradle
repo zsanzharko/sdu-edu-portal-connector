@@ -1,2 +1,2 @@
 rootProject.name = 'edu-portal-connector'
-include('libs')
+include('lib')
