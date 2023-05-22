@@ -71,72 +71,54 @@ public class PortalRequestAPIConnectorTest {
   void pingDashboard() throws IOException, PortalBadAuthorizationException {
     PortalResponse response = service.getDashboardResponse();
     Assertions.assertNotNull(response);
-    System.out.println("pingDashboard");
-    System.out.println(service.getMapper().writeValueAsString(response.getData()));
   }
 
   @Test
   void pingScheduler() throws IOException, PortalBadAuthorizationException {
     PortalResponse response = service.getScheduleResponse();
     Assertions.assertNotNull(response);
-    System.out.println("pingScheduler");
-    System.out.println(service.getMapper().writeValueAsString(response.getData()));
   }
 
   @Test
   void pingAttendance() throws IOException, PortalBadAuthorizationException {
     PortalResponse response = service.getAttendanceResponse();
     Assertions.assertNotNull(response);
-    System.out.println("pingAttendance");
-    System.out.println(service.getMapper().writeValueAsString(response.getData()));
   }
 
   @Test
   void pingGrades() throws IOException, PortalBadAuthorizationException {
     PortalResponse response = service.getGradesResponse();
     Assertions.assertNotNull(response);
-    System.out.println("pingGrades");
-    System.out.println(service.getMapper().writeValueAsString(response.getData()));
   }
 
   @Test
   void pingSystemCalendar() throws IOException, PortalBadAuthorizationException {
     PortalResponse response = service.getSystemCalendarResponse();
     Assertions.assertNotNull(response);
-    System.out.println("pingSystemCalendar");
-    System.out.println(service.getMapper().writeValueAsString(response.getData()));
   }
 
   @Test
   void pingMyAcademic() throws IOException, PortalBadAuthorizationException {
     PortalResponse response = service.getMyAcademicResponse();
     Assertions.assertNotNull(response);
-    System.out.println("pingMyAcademic");
-    System.out.println(service.getMapper().writeValueAsString(response.getData()));
   }
 
   @Test
   void pingTranscript() throws IOException, PortalBadAuthorizationException {
     PortalResponse response = service.getTranscriptResponse();
     Assertions.assertNotNull(response);
-    System.out.println("pingTranscript");
-    System.out.println(service.getMapper().writeValueAsString(response.getData()));
   }
 
   @Test
   void pingOperationResponse() throws IOException, PortalBadAuthorizationException {
     PortalResponse response = service.getOperationResponse();
     Assertions.assertNotNull(response);
-    System.out.println("pingOperationResponse");
-    System.out.println(service.getMapper().writeValueAsString(response.getData()));
   }
 
   @Test
   void pingRegistration() throws IOException, PortalBadAuthorizationException {
     PortalResponse response = service.getRegistrationResponse();
     Assertions.assertNotNull(response);
-    System.out.println("pingRegistration");
-    System.out.println(service.getMapper().writeValueAsString(response.getData()));
   }
 
   @AfterAll

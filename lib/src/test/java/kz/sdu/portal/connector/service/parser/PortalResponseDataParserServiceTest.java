@@ -2,11 +2,6 @@ package kz.sdu.portal.connector.service.parser;
 
 import kz.sdu.portal.connector.dto.AuthorizeStudentCredential;
 import kz.sdu.portal.connector.dto.portal.PortalResponse;
-import kz.sdu.portal.connector.dto.portal.StudentAcademic;
-import kz.sdu.portal.connector.dto.portal.StudentOperation;
-import kz.sdu.portal.connector.dto.portal.StudentPortalDashboard;
-import kz.sdu.portal.connector.dto.portal.attendance.StudentPortalAttendance;
-import kz.sdu.portal.connector.dto.portal.schedule.StudentSchedule;
 import kz.sdu.portal.connector.exception.PortalException;
 import kz.sdu.portal.connector.service.PortalRequestAPIConnector;
 import org.junit.jupiter.api.AfterAll;
@@ -23,7 +18,6 @@ import java.util.Properties;
 class PortalResponseDataParserServiceTest {
   private static final Properties studentCredentials = new Properties();
   private static PortalRequestAPIConnector service;
-  private static final PortalParserService portalParserService = new PortalParserService();
   private static String studentId;
 
   @BeforeAll
@@ -55,12 +49,9 @@ class PortalResponseDataParserServiceTest {
     PortalResponse response = service.getDashboardResponse();
     Assertions.assertNotNull(response);
 
-    StudentPortalDashboard dashboard = portalParserService.parseResponse(studentId,
+    PortalParserService.parseResponse(studentId,
             response.getData(), new DashboardParserServiceImpl()
     );
-
-    System.out.println("getDtoDashboard");
-    System.out.println(dashboard);
   }
 
   @Test
@@ -68,12 +59,9 @@ class PortalResponseDataParserServiceTest {
     PortalResponse response = service.getScheduleResponse();
     Assertions.assertNotNull(response);
 
-    StudentSchedule studentSchedule = portalParserService.parseResponse(
+    PortalParserService.parseResponse(
             studentId, response.getData(), new ScheduleParserServiceImpl()
     );
-
-    System.out.println("getDtoScheduler");
-    System.out.println(studentSchedule);
   }
 
   @Test
@@ -81,12 +69,9 @@ class PortalResponseDataParserServiceTest {
     PortalResponse response = service.getAttendanceResponse();
     Assertions.assertNotNull(response);
 
-    StudentPortalAttendance studentPortalAttendance = portalParserService.parseResponse(
+    PortalParserService.parseResponse(
             studentId, response.getData(), new AttendanceParserServiceImpl()
     );
-
-    System.out.println("getDtoAttendance");
-    System.out.println(studentPortalAttendance);
   }
 
   @Test
@@ -94,11 +79,9 @@ class PortalResponseDataParserServiceTest {
     PortalResponse response = service.getMyAcademicResponse();
     Assertions.assertNotNull(response);
 
-    StudentAcademic studentAcademic = portalParserService.parseResponse(
+    PortalParserService.parseResponse(
             studentId, response.getData(), new AcademicParserServiceImpl()
     );
-    System.out.println("getDtoMyAcademic");
-    System.out.println(studentAcademic);
   }
 
   @Test
@@ -106,12 +89,9 @@ class PortalResponseDataParserServiceTest {
     PortalResponse response = service.getOperationResponse();
     Assertions.assertNotNull(response);
 
-    StudentOperation studentOperation = portalParserService.parseResponse(
+    PortalParserService.parseResponse(
             studentId, response.getData(), new OperationParserServiceImpl()
     );
-
-    System.out.println("getDtoOperationResponse");
-    System.out.println(studentOperation);
   }
 
   @AfterAll
