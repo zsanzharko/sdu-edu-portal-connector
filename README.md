@@ -17,7 +17,7 @@ The connector provides data that is also used by the main student portal site.
     }
     
     dependencies {
-        implementation 'com.github.zsanzharko:sdu-edu-portal-connector:1.1'
+        implementation 'com.github.zsanzharko:sdu-edu-portal-connector:1.2'
     }
 ```
 
@@ -46,6 +46,7 @@ The `AuthorizeStudentCredential.class` is used to connect a student to the porta
         PortalResponse response = service.getMyAcademicResponse();
         System.out.println("pingMyAcademic");
         System.out.println(service.getMapper().writeValueAsString(response.getData()));
+        service.close();
     }
   }
 ```
@@ -58,9 +59,10 @@ The `AuthorizeStudentCredential.class` is used to connect a student to the porta
     AuthorizeStudentCredential authorizeStudentCredential = new AuthorizeStudentCredential(
                 "student_id", new char[] {'p','a','s','s','w','o','r','d'});
 
-    StudentAcademic studentAcademic = portalParserService.parseResponse(
+    StudentAcademic studentAcademic = PortalParserService.parseResponse(
             studentId, response.getData(), new AcademicParserServiceImpl()
     );
+    service.close();
     
     System.out.println("getDtoMyAcademic");
     System.out.println(studentAcademic);

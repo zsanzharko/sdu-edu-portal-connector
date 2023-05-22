@@ -8,7 +8,7 @@ import java.util.Map;
 public class PortalParserService {
   private static final String RESPONSE_KEY_RESOLVER_NAME = "data";
 
-  public <T extends ParseablePortalInfoResponse> T parseResponse(
+  public static <T extends ParseablePortalInfoResponse> T parseResponse(
           String studentId, Map<String, Object> response,
           PortalResponseDataParserService<T> parserService) throws PortalParseResponseException {
     if (response.containsKey(RESPONSE_KEY_RESOLVER_NAME)) {
