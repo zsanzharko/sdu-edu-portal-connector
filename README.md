@@ -21,6 +21,16 @@ The connector provides data that is also used by the main student portal site.
     }
 ```
 
+### HTTPS connection PXI problem
+
+After importing dependency, you need to import certificate from main website to Java Compiler.
+Step-by-step: 
+1. Go to the [SDU website](https://my.sdu.edu.kz/), and [download certificate from browser](https://superuser.com/questions/1291416/download-pem-via-browser-only).
+2. Open Command prompt and check your java compiler.
+3. Add certificate to cacerts in JDK compiler and JDK.
+   - Example `keytool -import -trustcacerts -alias sdu-portal -file C:\<PATH>\_.sdu.edu.kz.cer -cacerts`
+   - See more [here](https://www.ibm.com/docs/en/tnpm/1.4.2?topic=security-import-certificate-jre-keystore)
+
 `PortalRequestAPIConnector.class` is the main class for connect to portal with user credentials.
 
 ### Authentication
