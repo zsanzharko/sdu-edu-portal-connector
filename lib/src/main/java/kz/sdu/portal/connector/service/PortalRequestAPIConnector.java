@@ -24,18 +24,18 @@ import java.util.Map;
 
 @Slf4j
 public class PortalRequestAPIConnector implements AutoCloseable {
-  private final static String BASE_URL = "https://my.sdu.edu.kz/";
-  private final static String LOGIN_API_NAME = "api/login";
-  private final static String LOGOUT_API_NAME = "auth/logout";
-  private final static String DASHBOARD_API_NAME = "api/v1/my-dashboard";
-  private final static String ACADEMIC_SCHEDULER_API_NAME = "api/v1/my-academic/my-schedule";
-  private final static String ACADEMIC_ATTENDANCE_API_NAME = "api/v1/my-academic/my-attendance";
-  private final static String ACADEMIC_GRADES_API_NAME = "api/v1/my-academic/my-grades";
-  private final static String ACADEMIC_SYSTEM_CALENDAR_API_NAME = "api/v1/my-system-calendar";
-  private final static String ACADEMIC_MY_ACADEMIC_API_NAME = "api/v1/my-academic";
-  private final static String ACADEMIC_TRANSCRIPT_API_NAME = "api/v1/my-academic/my-transcript";
-  private final static String OPERATION_API_NAME = "api/v1/my-operations";
-  private final static String ACADEMIC_REGISTRATION_API_NAME = "api/v1/my-registration";
+  private final static String BASE_URL = "https://my.sdu.edu.kz";
+  private final static String LOGIN_API_NAME = "/api/login";
+  private final static String LOGOUT_API_NAME = "/auth/logout";
+  private final static String DASHBOARD_API_NAME = "/api/v1/my-dashboard";
+  private final static String ACADEMIC_SCHEDULER_API_NAME = "/api/v1/my-academic/my-schedule";
+  private final static String ACADEMIC_ATTENDANCE_API_NAME = "/api/v1/my-academic/my-attendance";
+  private final static String ACADEMIC_GRADES_API_NAME = "/api/v1/my-academic/my-grades";
+  private final static String ACADEMIC_SYSTEM_CALENDAR_API_NAME = "/api/v1/my-system-calendar";
+  private final static String ACADEMIC_MY_ACADEMIC_API_NAME = "/api/v1/my-academic";
+  private final static String ACADEMIC_TRANSCRIPT_API_NAME = "/api/v1/my-academic/my-transcript";
+  private final static String OPERATION_API_NAME = "/api/v1/my-operations";
+  private final static String ACADEMIC_REGISTRATION_API_NAME = "/api/v1/my-registration";
 
   @Getter
   private final ObjectMapper mapper = new ObjectMapper();
