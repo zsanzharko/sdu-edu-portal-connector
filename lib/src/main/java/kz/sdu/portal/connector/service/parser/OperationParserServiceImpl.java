@@ -5,10 +5,10 @@ import kz.sdu.portal.connector.dto.portal.StudentOperation;
 import java.util.Map;
 
 public class OperationParserServiceImpl implements PortalResponseDataParserService<StudentOperation> {
-  public static final String DOC_REQUEST_NAME = "docRequest";
-  public static final String CONSENT_REQUEST_NAME = "consentRequest";
-  public static final String COUNT_OF_COURSE_NAME = "countOfCourse";
-  public static final String COUNT_OF_WITHDRAW_NAME = "countOfWithdraw";
+  private static final String DOC_REQUEST_NAME = "docRequest";
+  private static final String CONSENT_REQUEST_NAME = "consentRequest";
+  private static final String COUNT_OF_COURSE_NAME = "countOfCourse";
+  private static final String COUNT_OF_WITHDRAW_NAME = "countOfWithdraw";
 
   @Override
   public StudentOperation parseResponse(String studentId, Map<String, Object> response) {
