@@ -5,10 +5,10 @@ import kz.sdu.portal.connector.dto.portal.StudentAcademic;
 import java.util.Map;
 
 public class AcademicParserServiceImpl implements PortalResponseDataParserService<StudentAcademic> {
-  public static final String TOTAL_ECTS_NAME = "totalEcts";
-  public static final String TOTAL_ECTS_FOR_SEMESTER_NAME = "totalEctsForSemester";
-  public static final String TOTAL_ECTS_RETAKE_NAME = "totalEctsRetake";
-  public static final String TOTAL_ECTS_COMPLETED_NAME = "totalEctsCompleted";
+  private static final String TOTAL_ECTS_NAME = "totalEcts";
+  private static final String TOTAL_ECTS_FOR_SEMESTER_NAME = "totalEctsForSemester";
+  private static final String TOTAL_ECTS_RETAKE_NAME = "totalEctsRetake";
+  private static final String TOTAL_ECTS_COMPLETED_NAME = "totalEctsCompleted";
 
   @Override
   public StudentAcademic parseResponse(String studentId, Map<String, Object> response) {

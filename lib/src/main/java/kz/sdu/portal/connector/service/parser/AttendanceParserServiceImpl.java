@@ -3,26 +3,24 @@ package kz.sdu.portal.connector.service.parser;
 import kz.sdu.portal.connector.dto.portal.attendance.StudentAttendanceCourse;
 import kz.sdu.portal.connector.dto.portal.attendance.StudentPortalAttendance;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class AttendanceParserServiceImpl implements PortalResponseDataParserService<StudentPortalAttendance> {
   private static final String BASE_PATH_NAME = "attendance";
-  public static final String COURSE_CODE_NAME = "ders_kod";
-  public static final String COURSE_TITLE_NAME = "title";
-  public static final String COURSE_ABSENCE_COUNT_NAME = "absence_count";
-  public static final String COURSE_ATTEND_COUNT_NAME = "attend_count";
-  public static final String COURSE_PERMIT_COUNT_NAME = "permit_count";
-  public static final String COURSE_HOURS_NAME = "hour_num";
-  public static final String COURSE_YEAR_NAME = "year";
-  public static final String COURSE_TERM_NAME = "term";
-  public static final String COURSE_ABSENCE_NAME = "absence";
+  private static final String COURSE_CODE_NAME = "ders_kod";
+  private static final String COURSE_TITLE_NAME = "title";
+  private static final String COURSE_ABSENCE_COUNT_NAME = "absence_count";
+  private static final String COURSE_ATTEND_COUNT_NAME = "attend_count";
+  private static final String COURSE_PERMIT_COUNT_NAME = "permit_count";
+  private static final String COURSE_HOURS_NAME = "hour_num";
+  private static final String COURSE_YEAR_NAME = "year";
+  private static final String COURSE_TERM_NAME = "term";
+  private static final String COURSE_ABSENCE_NAME = "absence";
 
   @Override
   public StudentPortalAttendance parseResponse(String studentId, Map<String, Object> response) {
     final StudentPortalAttendance portalAttendance = new StudentPortalAttendance();
-    final List<StudentAttendanceCourse> attendanceCourseList = new ArrayList<>();
     @SuppressWarnings("unchecked")
     final Map<String, List<Object>> attendance = (Map<String, List<Object>>) response.get(BASE_PATH_NAME);
 

@@ -3,11 +3,7 @@ package kz.sdu.portal.connector.service;
 import kz.sdu.portal.connector.dto.AuthorizeStudentCredential;
 import kz.sdu.portal.connector.dto.portal.PortalResponse;
 import kz.sdu.portal.connector.exception.PortalBadAuthorizationException;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -104,6 +100,7 @@ public class PortalRequestAPIConnectorTest {
   }
 
   @Test
+  @Disabled("Cause server side not handle transcript endpoint")
   void pingTranscript() throws IOException, PortalBadAuthorizationException {
     PortalResponse response = service.getTranscriptResponse();
     Assertions.assertNotNull(response);

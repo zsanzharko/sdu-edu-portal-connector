@@ -23,11 +23,11 @@ public class MapResponseHandler implements HttpClientResponseHandler<PortalRespo
   }
 
   /**
-   * Processes an {@link ClassicHttpResponse} and returns some value
+   * Processes an {@link ClassicHttpResponse} and returns a {@link PortalResponse} object
    * corresponding to that response.
    *
    * @param response The response to process
-   * @return A value determined by the response
+   * @return The processed PortalResponse object
    * @throws IOException in case of a problem or the connection was aborted
    */
   @Override

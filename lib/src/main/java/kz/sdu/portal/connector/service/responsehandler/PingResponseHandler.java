@@ -5,11 +5,10 @@ import org.apache.hc.core5.http.io.HttpClientResponseHandler;
 
 public class PingResponseHandler implements HttpClientResponseHandler<Boolean> {
   /**
-   * Processes an {@link ClassicHttpResponse} and returns some value
-   * corresponding to that response.
+   * Processes an {@link ClassicHttpResponse} and determines whether the response is successful or not.
    *
    * @param response The response to process
-   * @return A value determined by the response
+   * @return {@code true} if the response is successful, otherwise {@code false}
    */
   @Override
   public Boolean handleResponse(ClassicHttpResponse response) {

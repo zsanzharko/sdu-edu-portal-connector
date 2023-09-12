@@ -17,25 +17,29 @@ import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.io.entity.StringEntity;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class represents a connector for making API requests to the portal server. It provides methods for
+ * authorizing a client, retrieving various data from the portal, and logging out.
+ * The class implements the AutoCloseable interface to ensure proper cleanup of resources.
+ */
 @Slf4j
 public class PortalRequestAPIConnector implements AutoCloseable {
-  private final static String BASE_URL = "https://my.sdu.edu.kz/";
-  private final static String LOGIN_API_NAME = "api/login";
-  private final static String LOGOUT_API_NAME = "auth/logout";
-  private final static String DASHBOARD_API_NAME = "api/v1/my-dashboard";
-  private final static String ACADEMIC_SCHEDULER_API_NAME = "api/v1/my-academic/my-schedule";
-  private final static String ACADEMIC_ATTENDANCE_API_NAME = "api/v1/my-academic/my-attendance";
-  private final static String ACADEMIC_GRADES_API_NAME = "api/v1/my-academic/my-grades";
-  private final static String ACADEMIC_SYSTEM_CALENDAR_API_NAME = "api/v1/my-system-calendar";
-  private final static String ACADEMIC_MY_ACADEMIC_API_NAME = "api/v1/my-academic";
-  private final static String ACADEMIC_TRANSCRIPT_API_NAME = "api/v1/my-academic/my-transcript";
-  private final static String OPERATION_API_NAME = "api/v1/my-operations";
-  private final static String ACADEMIC_REGISTRATION_API_NAME = "api/v1/my-registration";
+  private final static String BASE_URL = "https://my.sdu.edu.kz";
+  private final static String LOGIN_API_NAME = "/api/login";
+  private final static String LOGOUT_API_NAME = "/auth/logout";
+  private final static String DASHBOARD_API_NAME = "/api/v1/my-dashboard";
+  private final static String ACADEMIC_SCHEDULER_API_NAME = "/api/v1/my-academic/my-schedule";
+  private final static String ACADEMIC_ATTENDANCE_API_NAME = "/api/v1/my-academic/my-attendance";
+  private final static String ACADEMIC_GRADES_API_NAME = "/api/v1/my-academic/my-grades";
+  private final static String ACADEMIC_SYSTEM_CALENDAR_API_NAME = "/api/v1/my-system-calendar";
+  private final static String ACADEMIC_MY_ACADEMIC_API_NAME = "/api/v1/my-academic";
+  private final static String ACADEMIC_TRANSCRIPT_API_NAME = "/api/v1/my-academic/my-transcript";
+  private final static String OPERATION_API_NAME = "/api/v1/my-operations";
+  private final static String ACADEMIC_REGISTRATION_API_NAME = "/api/v1/my-registration";
 
   @Getter
   private final ObjectMapper mapper = new ObjectMapper();
@@ -44,15 +48,33 @@ public class PortalRequestAPIConnector implements AutoCloseable {
 
   private final ClientConnectionPortalInfo client = new ClientConnectionPortalInfo();
 
+  /**
+   * Constructs a new instance of PortalRequestAPIConnector.
+   * This constructor initializes the HTTP client using the default configuration
+   * provided by HttpClients.createDefault(). The initial language is set to English (EN)
+   * by default.
+   */
   public PortalRequestAPIConnector() {
     this.httpClient = HttpClients.createDefault();
     this.language = PortalLanguageConnector.EN;
   }
 
+  /**
+   * Sends a ping request to the server.
+   * @return true if the ping request is successful, otherwise false.
+   * @throws IOException if there was an error executing the ping request.
+   */
   public boolean ping() throws IOException {
     return httpClient.execute(new HttpGet(BASE_URL), new PingResponseHandler());
   }
 
+  /**
+   * Authorizes the student credential for accessing the portal.
+   *
+   * @param authorizeStudentCredential the student credential to be authorized
+   * @return true if the authorization is successful, false otherwise
+   * @throws IOException if there is an IO error during the authorization process
+   */
   public boolean authorize(AuthorizeStudentCredential authorizeStudentCredential) throws IOException {
     if (client.validAuth()) {
       return true;
@@ -77,42 +99,115 @@ public class PortalRequestAPIConnector implements AutoCloseable {
     return false;
   }
 
+  /**
+   * Retrieves the dashboard response from the portal.
+   *
+   * @return the portal response representing the dashboard
+   * @throws IOException if an I/O error occurs while executing the HTTP request
+   * @throws PortalBadAuthorizationException if the portal authorization token is invalid or expired
+   */
   public PortalResponse getDashboardResponse() throws IOException, PortalBadAuthorizationException {
     return getHttpGetPortalResponse(DASHBOARD_API_NAME);
   }
 
+  /**
+   * Retrieves the schedule response from the portal.
+   *
+   * @return the portal response representing the schedule
+   * @throws IOException if an I/O error occurs while executing the HTTP request
+   * @throws PortalBadAuthorizationException if the portal authorization token is invalid or expired
+   */
   public PortalResponse getScheduleResponse() throws IOException, PortalBadAuthorizationException {
     return getHttpGetPortalResponse(ACADEMIC_SCHEDULER_API_NAME);
   }
 
+  /**
+   * Retrieves the attendance response from the portal.
+   *
+   * @return the portal response representing the attendance
+   * @throws IOException if an I/O error occurs while executing the HTTP request
+   * @throws PortalBadAuthorizationException if the portal authorization token is invalid or expired
+   */
   public PortalResponse getAttendanceResponse() throws IOException, PortalBadAuthorizationException {
     return getHttpGetPortalResponse(ACADEMIC_ATTENDANCE_API_NAME);
   }
 
+  /**
+   * Retrieves the grades response from the portal.
+   *
+   * @return the portal response representing the grades
+   * @throws IOException if an I/O error occurs while executing the HTTP request
+   * @throws PortalBadAuthorizationException if the portal authorization token is invalid or expired
+   */
   public PortalResponse getGradesResponse() throws IOException, PortalBadAuthorizationException {
     return getHttpGetPortalResponse(ACADEMIC_GRADES_API_NAME);
   }
 
+  /**
+   * Retrieves the system calendar response from the portal.
+   *
+   * @return the portal response representing the system calendar
+   * @throws IOException if an I/O error occurs while executing the HTTP request
+   * @throws PortalBadAuthorizationException if the portal authorization token is invalid or expired
+   */
   public PortalResponse getSystemCalendarResponse() throws IOException, PortalBadAuthorizationException {
     return getHttpGetPortalResponse(ACADEMIC_SYSTEM_CALENDAR_API_NAME);
   }
 
+  /**
+   * Retrieves the academic response for the current user.
+   * This method makes an HTTP GET request to the My Academic API endpoint and returns the response.
+   *
+   * @return The academic response as a PortalResponse object.
+   * @throws IOException if there is an error during the HTTP request.
+   * @throws PortalBadAuthorizationException if the authorization for accessing the API is invalid.
+   */
   public PortalResponse getMyAcademicResponse() throws IOException, PortalBadAuthorizationException {
     return getHttpGetPortalResponse(ACADEMIC_MY_ACADEMIC_API_NAME);
   }
 
+  /**
+   * Retrieves the response from the academic transcript API.
+   *
+   * @throws IOException                       If an I/O error occurs while making the HTTP request.
+   * @throws PortalBadAuthorizationException   If the authorization credentials are invalid.
+   *
+   * @return The portal response from the academic transcript API.
+   */
   public PortalResponse getTranscriptResponse() throws IOException, PortalBadAuthorizationException {
     return getHttpGetPortalResponse(ACADEMIC_TRANSCRIPT_API_NAME);
   }
 
+  /**
+   * Retrieves the portal response for the operation.
+   *
+   * @return the portal response object
+   * @throws IOException if there is an I/O error while retrieving the response
+   * @throws PortalBadAuthorizationException if the authorization is invalid
+   */
   public PortalResponse getOperationResponse() throws IOException, PortalBadAuthorizationException {
     return getHttpGetPortalResponse(OPERATION_API_NAME);
   }
 
+  /**
+   * Retrieves the registration response from the portal.
+   *
+   * @throws IOException                  if an I/O error occurs when making the HTTP request
+   * @throws PortalBadAuthorizationException if the authorization is invalid or expired
+   *
+   * @return the response from the portal for the registration
+   */
   public PortalResponse getRegistrationResponse() throws IOException, PortalBadAuthorizationException {
     return getHttpGetPortalResponse(ACADEMIC_REGISTRATION_API_NAME);
   }
 
+  /**
+   * Executes logout client request to the portal.
+   *
+   * @return true if the logout request was successful, false otherwise.
+   * @throws PortalBadAuthorizationException if the authorization is invalid.
+   * @throws IOException if an I/O error occurs during the execution of the request.
+   */
   public boolean getLogoutClient() throws PortalBadAuthorizationException, IOException {
     HttpGet request = new HttpGet(BASE_URL + LOGOUT_API_NAME);
     setDefaultPortalHeaders(request);

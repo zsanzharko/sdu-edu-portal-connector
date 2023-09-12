@@ -10,14 +10,14 @@ import java.util.Map;
 public class ScheduleParserServiceImpl implements PortalResponseDataParserService<StudentSchedule> {
   private static final String BASE_SCHEDULE_PATH = "schedule";
   private static final String BASE_TERM_PATH = "terms";
-  public static final String COURSE_CODE_NAME = "ders_kod";
-  public static final String COURSE_TITLE_NAME = "course_title";
-  public static final String SECTION_TITLE_NAME = "section_title";
-  public static final String COURSE_INSTRUCTOR_NAME = "instructor";
-  public static final String COURSE_WEEK_DAY_ID_NAME = "week_d_id";
-  public static final String COURSE_START_TIME_NAME = "start_time";
-  public static final String COURSE_END_TIME_NAME = "end_time";
-  public static final String COURSE_ROOM_CODE_NAME = "room";
+  private static final String COURSE_CODE_NAME = "ders_kod";
+  private static final String COURSE_TITLE_NAME = "course_title";
+  private static final String SECTION_TITLE_NAME = "section_title";
+  private static final String COURSE_INSTRUCTOR_NAME = "instructor";
+  private static final String COURSE_WEEK_DAY_ID_NAME = "week_d_id";
+  private static final String COURSE_START_TIME_NAME = "start_time";
+  private static final String COURSE_END_TIME_NAME = "end_time";
+  private static final String COURSE_ROOM_CODE_NAME = "room";
 
   @Override
   public StudentSchedule parseResponse(String studentId, Map<String, Object> response) {
