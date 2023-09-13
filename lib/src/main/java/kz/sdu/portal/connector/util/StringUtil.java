@@ -12,9 +12,16 @@ public class StringUtil {
     BufferedReader reader = new BufferedReader(isReader);
     StringBuilder sb = new StringBuilder();
     String str;
-    while((str = reader.readLine())!= null){
+    while ((str = reader.readLine()) != null) {
       sb.append(str);
     }
     return sb.toString();
+  }
+
+  public static boolean isNumber(String s) {
+    for (char c : s.toCharArray()) {
+      if (!Character.isDigit(c)) return false;
+    }
+    return true;
   }
 }
